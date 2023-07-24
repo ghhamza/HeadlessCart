@@ -1,2 +1,2 @@
-# headlesscart
+# HeadlessCart
 Open Source Headless Ecommerce
