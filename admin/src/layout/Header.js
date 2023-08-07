@@ -24,7 +24,7 @@ export default function HeaderSearch() {
 
   return (
     <>
-      <Drawer padding={0} size="lg" withCloseButton={false} opened={opened} onClose={close}>
+      <Drawer padding={0} size="xl" withCloseButton={false} opened={opened} onClose={close}>
         <ServicesGrid/>
       </Drawer>
       <Header height={40} className={classes.header}><Button onClick={open}>Open Drawer</Button></Header>

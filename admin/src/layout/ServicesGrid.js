@@ -7,27 +7,24 @@ import {
   rem,
 } from '@mantine/core'
 import {
-  IconCreditCard,
-  IconBuildingBank,
-  IconRepeat,
-  IconReceiptRefund,
-  IconReceipt,
-  IconReceiptTax,
-  IconReport,
-  IconCashBanknote,
-  IconCoin,
+  IconReceipt2,
+  IconBox,
+  IconCategory,
+  IconAdjustmentsAlt,
+  IconVersions,
 } from '@tabler/icons-react'
 
-const mockdata = [
-  {title: 'Credit cards', icon: IconCreditCard, color: 'violet'},
-  {title: 'Banks nearby', icon: IconBuildingBank, color: 'indigo'},
-  {title: 'Transfers', icon: IconRepeat, color: 'blue'},
-  {title: 'Refunds', icon: IconReceiptRefund, color: 'green'},
-  {title: 'Receipts', icon: IconReceipt, color: 'teal'},
-  {title: 'Taxes', icon: IconReceiptTax, color: 'cyan'},
-  {title: 'Reports', icon: IconReport, color: 'pink'},
-  {title: 'Payments', icon: IconCoin, color: 'red'},
-  {title: 'Cashback', icon: IconCashBanknote, color: 'orange'},
+const apps = [
+  {
+    title: 'Products',
+    routes: [
+      {title: 'Products', icon: IconBox, color: 'violet'},
+      {title: 'Categories', icon: IconCategory, color: 'indigo'},
+      {title: 'Attributes', icon: IconAdjustmentsAlt, color: 'blue'},
+      {title: 'Variants', icon: IconVersions, color: 'green'},
+      {title: 'Pricelists', icon: IconReceipt2, color: 'green'},
+    ],
+  },
 ]
 
 const useStyles = createStyles((theme) => ({
@@ -63,24 +60,23 @@ const useStyles = createStyles((theme) => ({
 export default function ServicesGrid() {
   const {classes, theme} = useStyles()
 
-  const items = mockdata.map((item) => (
-    <UnstyledButton key={item.title} className={classes.item}>
-      <item.icon color={theme.colors[item.color][6]} size="2rem"/>
-      <Text size="xs" m={2}>
-        {item.title}
-      </Text>
-    </UnstyledButton>
-  ))
-
   return (
     <div className={classes.container}>
       {
-        ['Products', 'Contacts', 'Orders', 'Config'].map(service => (
+        apps.map(app => (
           <>
             <Card mt="md" className={classes.card}>
-              <Text className={classes.title} mb={4}>{service}</Text>
+              <Text className={classes.title} mb={4}>{app.title}</Text>
               <SimpleGrid cols={5}>
-                {items}
+                {app.routes.map((item) => (
+                  <UnstyledButton key={item.title} className={classes.item}>
+                    <item.icon color={theme.colors[item.color][6]} size="2rem"/>
+                    <Text size="xs" m={2}>
+                      {item.title}
+                    </Text>
+                  </UnstyledButton>
+                ))
+                }
               </SimpleGrid>
             </Card>
           </>
